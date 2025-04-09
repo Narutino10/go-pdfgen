@@ -62,8 +62,8 @@ pdf.Save("test.pdf")
 ## ⚒️ Installation
 
 ```bash
-git clone https://github.com/TONUTILISATEUR/pdfgen-lib.git
-cd pdfgen-lib
+git clone https://github.com/Narutino10/go-pdfgen.git
+cd go-pdfgen
 go run main.go
 ```
 
