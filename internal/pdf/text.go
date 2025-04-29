@@ -13,7 +13,3 @@ endstream`,
 
 	p.AddObject(stream)
 }
-
-func (p *PDFWriter) AddObject(content string) {
-	p.addRawObject(content)
-}
