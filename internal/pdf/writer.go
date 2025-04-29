@@ -35,16 +35,31 @@ func (p *PDFWriter) AddObject(content string) {
 func (p *PDFWriter) BuildPDF() string {
 	header := "%PDF-1.4\n"
 
-	// 1. Catalog (obj 1)
+	// 1. Catalog
 	p.addRawObject("<< /Type /Catalog /Pages 2 0 R >>")
 
-	// 2. Pages (obj 2)
+	// 2. Pages
 	p.addRawObject("<< /Type /Pages /Kids [3 0 R] /Count 1 >>")
 
-	// 3. Page (obj 3)
-	p.addRawObject("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << >> >>")
+	// 3. Page (avec /Resources et /Font intégré)
+	pageObj := `<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595 842]
+/Contents 4 0 R
+/Resources <<
+    /Font <<
+      /F1 <<
+        /Type /Font
+        /Subtype /Type1
+        /BaseFont /Helvetica
+        /Encoding /WinAnsiEncoding
+      >>
+    >>
+  >>
+>>`
+	p.addRawObject(pageObj)
 
-	// 4. Contents (obj 4)
+	// 4. Contents
 	contentStream := ""
 	for _, content := range p.contentObjects {
 		contentStream += content + "\n"
