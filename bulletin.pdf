@@ -23,10 +23,14 @@ endobj
 >>
 endobj
 4 0 obj
-<< /Length 976 >>
+<< /Length 1154 >>
 stream
 << /Type /Pages /Kids [3 0 R] /Count 1 >>
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << >> >>
+<< /Length 57 >>
+stream
+BT /F1 18 Tf 221 50 Td (Bulletin scolaire) Tj ET
+endstream
 << /Length 57 >>
 stream
 BT /F1 18 Tf 100 750 Td (Bulletin scolaire) Tj ET
@@ -37,31 +41,35 @@ BT /F1 12 Tf 100 720 Td (Eleve : OUAHABI Ibrahim) Tj ET
 endstream
 << /Length 54 >>
 stream
-BT /F1 12 Tf 100 700 Td (Classe : 1IW-3) Tj ET
+BT /F1 12 Tf 100 700 Td (Classe : 4IW-3) Tj ET
 endstream
 << /Length 68 >>
 stream
-BT /F1 12 Tf 100 680 Td (Trimestre : 1 - Annee : 2025) Tj ET
+BT /F1 12 Tf 100 680 Td (Trimestre : 2 - Annee : 2024) Tj ET
 endstream
-<< /Length 76 >>
+<< /Length 63 >>
 stream
-BT /F1 10 Tf 100 650 Td (Culture numerique : 10.00 (coef 2.0)) Tj ET
+BT /F1 10 Tf 100 650 Td (Java : 20.00 (coef 2.0)) Tj ET
 endstream
-<< /Length 66 >>
+<< /Length 65 >>
 stream
-BT /F1 10 Tf 100 635 Td (Anglais : 20.00 (coef 1.0)) Tj ET
+BT /F1 10 Tf 100 635 Td (DevOps : 10.00 (coef 3.0)) Tj ET
 endstream
-<< /Length 72 >>
+<< /Length 73 >>
 stream
-BT /F1 10 Tf 100 620 Td (Projet tutore : 15.00 (coef 3.0)) Tj ET
+BT /F1 10 Tf 100 620 Td (Base de donnees : 5.00 (coef 2.0)) Tj ET
+endstream
+<< /Length 67 >>
+stream
+BT /F1 10 Tf 100 605 Td (API REST : 13.00 (coef 2.0)) Tj ET
 endstream
 << /Length 64 >>
 stream
-BT /F1 12 Tf 100 605 Td (Moyenne generale : 14.17) Tj ET
+BT /F1 12 Tf 100 590 Td (Moyenne generale : 11.78) Tj ET
 endstream
-<< /Length 82 >>
+<< /Length 96 >>
 stream
-BT /F1 12 Tf 100 585 Td (Appreciation : Tres bon trimestre, bravo !) Tj ET
+BT /F1 12 Tf 100 570 Td (Appreciation : Trimestre satisfaisant, peut mieux faire.) Tj ET
 endstream
 
 endstream
@@ -77,5 +85,5 @@ trailer
 << /Size 5
    /Root 1 0 R >>
 startxref
-1398
+1577
 %%EOF
