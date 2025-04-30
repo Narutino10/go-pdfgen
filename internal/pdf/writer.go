@@ -3,6 +3,7 @@ package pdf
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 type PDFWriter struct {
@@ -30,6 +31,44 @@ func (p *PDFWriter) addRawObject(content string) {
 
 func (p *PDFWriter) AddObject(content string) {
 	p.contentObjects = append(p.contentObjects, content)
+}
+
+// Nettoyage des caractères spéciaux pour éviter les bugs d'encodage
+func sanitizeText(s string) string {
+	r := strings.NewReplacer(
+		"é", "e",
+		"è", "e",
+		"ê", "e",
+		"ë", "e",
+		"à", "a",
+		"â", "a",
+		"î", "i",
+		"ï", "i",
+		"ô", "o",
+		"ù", "u",
+		"û", "u",
+		"ç", "c",
+		"É", "E",
+		"À", "A",
+		"€", "EUR",
+		"😊", ":)",
+		"🚀", "",
+		"’", "'",
+		"œ", "oe",
+	)
+	return r.Replace(s)
+}
+
+// Fonction publique pour écrire du texte
+func (p *PDFWriter) AddText(x, y, fontSize int, text string) {
+	cleanText := sanitizeText(text)
+	stream := fmt.Sprintf(`<< /Length %d >>
+stream
+BT /F1 %d Tf %d %d Td (%s) Tj ET
+endstream`,
+		len(cleanText)+40, fontSize, x, y, cleanText)
+
+	p.AddObject(stream)
 }
 
 func (p *PDFWriter) BuildPDF() string {
