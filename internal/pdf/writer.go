@@ -3,6 +3,7 @@ package pdf
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 type PDFWriter struct {
@@ -32,19 +33,72 @@ func (p *PDFWriter) AddObject(content string) {
 	p.contentObjects = append(p.contentObjects, content)
 }
 
+// Nettoyage des caractères spéciaux pour éviter les bugs d'encodage
+func sanitizeText(s string) string {
+	r := strings.NewReplacer(
+		"é", "e",
+		"è", "e",
+		"ê", "e",
+		"ë", "e",
+		"à", "a",
+		"â", "a",
+		"î", "i",
+		"ï", "i",
+		"ô", "o",
+		"ù", "u",
+		"û", "u",
+		"ç", "c",
+		"É", "E",
+		"À", "A",
+		"€", "EUR",
+		"😊", ":)",
+		"🚀", "",
+		"’", "'",
+		"œ", "oe",
+	)
+	return r.Replace(s)
+}
+
+// Fonction publique pour écrire du texte
+func (p *PDFWriter) AddText(x, y, fontSize int, text string) {
+	cleanText := sanitizeText(text)
+	stream := fmt.Sprintf(`<< /Length %d >>
+stream
+BT /F1 %d Tf %d %d Td (%s) Tj ET
+endstream`,
+		len(cleanText)+40, fontSize, x, y, cleanText)
+
+	p.AddObject(stream)
+}
+
 func (p *PDFWriter) BuildPDF() string {
 	header := "%PDF-1.4\n"
 
-	// 1. Catalog (obj 1)
+	// 1. Catalog
 	p.addRawObject("<< /Type /Catalog /Pages 2 0 R >>")
 
-	// 2. Pages (obj 2)
+	// 2. Pages
 	p.addRawObject("<< /Type /Pages /Kids [3 0 R] /Count 1 >>")
 
-	// 3. Page (obj 3)
-	p.addRawObject("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << >> >>")
+	// 3. Page (avec /Resources et /Font intégré)
+	pageObj := `<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595 842]
+/Contents 4 0 R
+/Resources <<
+    /Font <<
+      /F1 <<
+        /Type /Font
+        /Subtype /Type1
+        /BaseFont /Helvetica
+        /Encoding /WinAnsiEncoding
+      >>
+    >>
+  >>
+>>`
+	p.addRawObject(pageObj)
 
-	// 4. Contents (obj 4)
+	// 4. Contents
 	contentStream := ""
 	for _, content := range p.contentObjects {
 		contentStream += content + "\n"

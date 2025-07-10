@@ -6,44 +6,49 @@
 
 ## ✨ Objectif
 
-Créer une **librairie modulaire, simple à utiliser et performante** en Go permettant la génération de fichiers PDF depuis des données structurées (structs, JSON), sans utiliser de bibliothèque externe comme `gofpdf` ou `unipdf`.
+Créer une **librairie modulaire, simple à utiliser et performante** en Go permettant la génération de fichiers PDF depuis des données structurées (structs, saisie terminale), sans utiliser de bibliothèques externes comme `gofpdf` ou `unidoc`.
 
 ---
 
 ## 🧠 Pourquoi ce projet ?
 
-- Comprendre le format PDF et sa structure bas niveau
-- Apprendre à manipuler des fichiers binaires en Go
-- Créer un outil **professionnel**, **personnalisable** et **open-source**
-- Automatiser des tâches concrètes de génération documentaire
+- Comprendre la structure interne des fichiers PDF (catalog, pages, contenu)
+- Manipuler des flux binaires en Go (fichiers `.pdf` générés manuellement)
+- Créer un outil **ouvert**, **réutilisable** et **compréhensible**
+- Proposer une alternative légère pour générer automatiquement :
+  - Bulletins scolaires 📘
+  - Factures 🧾
+  - Rapports d’activités 📊
 
 ---
 
-## 📚 Fonctionnalités prévues
+## 📚 Fonctionnalités actuelles
 
-- [x] Génération brute de fichiers PDF avec du texte
-- [ ] Positionnement des blocs texte
-- [ ] Prise en charge de plusieurs pages
-- [ ] Gestion de tableaux et colonnes
-- [ ] Génération de documents types :
-  - [ ] Bulletins scolaires 📘
-  - [ ] Rapports d’activités 📊
-  - [ ] Factures automatisées 🧾
+- ✅ Génération manuelle de PDF (Header, Catalog, Pages, Text)
+- ✅ Positionnement des blocs texte avec `AddText(x, y, fontSize, string)`
+- ✅ Nettoyage automatique des caractères spéciaux (`€, é, 🚀`…)
+- ✅ Interface de **saisie terminale interactive** :
+  - `SaisieBulletin()`
+  - `SaisieFacture()`
+  - `SaisieRapport()`
+- ✅ Rendu final 100% compatible Acrobat/Chrome
 
 ---
 
-## 🏗 Structure du projet
+## 📁 Structure du projet
 
 ```
-pdfgen-lib/
-├── main.go                # Entrée principale pour tester la librairie
+go-pdfgen/
+├── main.go                    # Interface utilisateur CLI
 ├── internal/
-│   ├── pdf/               # Moteur PDF fait maison
+│   ├── pdf/                   # Moteur PDF fait maison
 │   │   └── writer.go
-│   └── models/            # Données structurées à formater
-│       ├── bulletin.go
-│       ├── invoice.go
-│       └── report.go
+│   ├── models/                # Données métiers structurées
+│   │   ├── bulletin.go
+│   │   ├── invoice.go
+│   │   └── report.go
+│   ├── utils/                 # Fonctions de saisie terminale
+│   │   └── formulaires.go
 └── README.md
 ```
 
@@ -52,14 +57,16 @@ pdfgen-lib/
 ## 🚀 Exemple d'utilisation
 
 ```go
-pdf := pdf.NewPDFWriter()
-pdf.AddText(100, 700, "Bonjour le monde")
-pdf.Save("test.pdf")
+writer := pdf.NewPDFWriter()
+writer.AddPage()
+writer.AddText(100, 700, 14, "Élève : Ibrahim OUAHABI")
+writer.AddText(100, 680, 12, "Classe : 5IW-3")
+writer.Save("test.pdf")
 ```
 
 ---
 
-## ⚒️ Installation
+## 🧪 Lancer le projet
 
 ```bash
 git clone https://github.com/Narutino10/go-pdfgen.git
@@ -67,18 +74,26 @@ cd go-pdfgen
 go run main.go
 ```
 
----
-
-## 🔧 À venir
-
-- 🎨 Rendu plus avancé (fonctions de style, lignes, tableaux)
-- 📄 Export multi-pages
-- 📦 Packaging en module Go
+> 💡 Un menu interactif vous permet de générer :
+> - un bulletin
+> - une facture
+> - un rapport
+> le tout depuis le terminal.
 
 ---
 
-## 🧑‍💻 Auteure
+## 🔧 Améliorations futures
 
-**Ibrahim OUAHABI**  **Cheick LANIKPEKOUN**
-Projet réalisé dans le cadre de l’ESGI (2025), Master 2 IW3
+- [ ] Ajout de styles : bordures, lignes, tableaux
+- [ ] Multipages / génération longue
+- [ ] Choix de polices dynamiques
+- [ ] Export en tant que vraie librairie Go (module)
+
+---
+
+## 🧑‍💻 Auteurs
+
+**Ibrahim OUAHABI**  
+**Cheick LANIKPEKOUN**  
+Projet réalisé dans le cadre du Master 2 IW3 – ESGI (2025)
 

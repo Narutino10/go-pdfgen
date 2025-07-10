@@ -25,24 +25,56 @@ func main() {
 
 		switch docType {
 		case "1":
+			tpl := pdf.TemplateConfig{
+				Title:      "Bulletin scolaire",
+				FontSize:   18,
+				MarginTop:  50,
+				Align:      "center",
+				MarginLeft: 40,
+			}
+			writer.ApplyTemplate(tpl)
+
 			bulletin := utils.SaisieBulletin()
 			pdf.DrawBulletin(bulletin, writer)
+
 			err := writer.Save("bulletin.pdf")
 			if err != nil {
 				log.Fatalf("Erreur sauvegarde Bulletin : %v", err)
 			}
 			fmt.Println("✅ Bulletin généré sous 'bulletin.pdf'")
+
 		case "2":
+			tpl := pdf.TemplateConfig{
+				Title:      "Facture",
+				FontSize:   18,
+				MarginTop:  50,
+				Align:      "right",
+				MarginLeft: 40,
+			}
+			writer.ApplyTemplate(tpl)
+
 			invoice := utils.SaisieFacture()
 			pdf.DrawInvoice(invoice, writer)
+
 			err := writer.Save("facture.pdf")
 			if err != nil {
 				log.Fatalf("Erreur sauvegarde Facture : %v", err)
 			}
 			fmt.Println("✅ Facture générée sous 'facture.pdf'")
+
 		case "3":
+			tpl := pdf.TemplateConfig{
+				Title:      "Rapport d'activité",
+				FontSize:   18,
+				MarginTop:  50,
+				Align:      "left",
+				MarginLeft: 40,
+			}
+			writer.ApplyTemplate(tpl)
+
 			report := utils.SaisieRapport()
 			pdf.DrawReport(report, writer)
+
 			err := writer.Save("rapport.pdf")
 			if err != nil {
 				log.Fatalf("Erreur sauvegarde Rapport : %v", err)
