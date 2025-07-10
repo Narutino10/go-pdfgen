@@ -1,0 +1,67 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << >> >>
+endobj
+4 0 obj
+<< /Length 846 >>
+stream
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << >> >>
+<< /Length 59 >>
+stream
+BT /F1 18 Tf 100 750 Td (Rapport d'Activité) Tj ET
+endstream
+<< /Length 51 >>
+stream
+BT /F1 12 Tf 100 720 Td (Titre : ras) Tj ET
+endstream
+<< /Length 55 >>
+stream
+BT /F1 12 Tf 100 700 Td (Auteur : cheick) Tj ET
+endstream
+<< /Length 57 >>
+stream
+BT /F1 12 Tf 100 680 Td (Date : 12/12/2026) Tj ET
+endstream
+<< /Length 54 >>
+stream
+BT /F1 12 Tf 100 650 Td (Introduction :) Tj ET
+endstream
+<< /Length 50 >>
+stream
+BT /F1 10 Tf 110 630 Td (nddjhdjdjd) Tj ET
+endstream
+<< /Length 50 >>
+stream
+BT /F1 12 Tf 100 590 Td (Sections :) Tj ET
+endstream
+<< /Length 52 >>
+stream
+BT /F1 12 Tf 100 550 Td (Conclusion :) Tj ET
+endstream
+<< /Length 44 >>
+stream
+BT /F1 10 Tf 110 530 Td (test) Tj ET
+endstream
+
+endstream
+endobj
+xref
+0 5
+0000000000 65535 f 
+0000000000 00000 n 
+0000000049 00000 n 
+0000000106 00000 n 
+0000000210 00000 n 
+trailer
+<< /Size 5
+   /Root 1 0 R >>
+startxref
+1116
+%%EOF
